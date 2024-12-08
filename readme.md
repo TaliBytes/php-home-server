@@ -37,6 +37,8 @@ Make sure dependencies are installed
 
 I found [this article](https://www.digitalocean.com/community/tutorials/how-to-install-lamp-stack-on-ubuntu#step-6-testing-database-connection-from-php-optional) (unaffiliated) very helpful. It details how to setup the LAMP stack, configure the necessities for Apache running PHP/MySQL, etc...
 
+[This article](https://scriptstown.com/how-to-setup-cloudflare-ssl-and-configure-origin-certificate-for-apache/) was helpful for configuring my Cloudflare Origin Certificate and PEM for my Apache server. I also have my Cloudflare configured to have A Name (example.com) point to my home server public IP. The home server has ports 443, 80, and 3389 (RDP) open. My router is configured to port-forward for 80 and 443.
+
 #### For Windows
 
 1 - Download php from [their website](https://windows.php.net/download). Microsoft recommends using Web PI instead. Instructions linked in item 3.
