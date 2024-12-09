@@ -35,11 +35,23 @@ Make sure dependencies are installed
 
 4 - `sudo apt install mysql-server`
 
-I found [this article](https://www.digitalocean.com/community/tutorials/how-to-install-lamp-stack-on-ubuntu#step-6-testing-database-connection-from-php-optional) (unaffiliated) very helpful. It details how to setup the LAMP stack, configure the necessities for Apache running PHP/MySQL, etc...
+5 - I found [this article](https://www.digitalocean.com/community/tutorials/how-to-install-lamp-stack-on-ubuntu#step-6-testing-database-connection-from-php-optional) (unaffiliated) very helpful. It details how to setup the LAMP stack, configure the necessities for Apache running PHP/MySQL, etc...
 
-[This article](https://scriptstown.com/how-to-setup-cloudflare-ssl-and-configure-origin-certificate-for-apache/) was helpful for configuring my Cloudflare Origin Certificate and PEM for my Apache server. I also have my Cloudflare configured to have A Name (example.com) point to my home server public IP. The home server has ports 443, 80, and 3389 (RDP) open. My router is configured to port-forward for 80 and 443.
+6 - [This article](https://scriptstown.com/how-to-setup-cloudflare-ssl-and-configure-origin-certificate-for-apache/) was helpful for configuring my Cloudflare Origin Certificate and PEM for my Apache server. I also have my Cloudflare configured to have A Name (example.com) point to my home server public IP. The home server has ports 443, 80, and 3389 (RDP) open. My router is configured to port-forward for 80 and 443.
 
-#### For Windows
+7 - use `sudo a2enmod rewrite`. This project handles routing thru PHP instead of a file directory or Apache.
+
+8 - run `sudo nano /etc/apache2/sites-available/your_site.conf` and add
+
+```XML
+<Directory /var/www/your_site>
+    AllowOverride All
+</Directory>
+```
+
+9 - Save and close. Run `systemctl restart apache2`.
+
+#### For Windows (IIS)
 
 1 - Download php from [their website](https://windows.php.net/download). Microsoft recommends using Web PI instead. Instructions linked in item 3.
 
@@ -49,9 +61,11 @@ I found [this article](https://www.digitalocean.com/community/tutorials/how-to-i
 
 3 - Configure IIS and PHP to run together. Microsoft's instructions [here](https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh994592(v=ws.11)) are quite helpful.
 
+Note: Using Apache on Windows will be fairly similar to the configuration detailed in the "For Linux" section above. At this time, I don't have specific instructions for enabling the ability to rewrite URLs via Apache for Windows. This should be possible but will take research on your part.
+
 ### Once The Server Is Configured
 
-- In your CLI, navigate to the folder the server utilizes for the static files (eg index.php under /var/www/yourdomain on Linux or C:/inetpub/root on Windows). Initialize a git repository.
+- In your CLI, navigate to the folder the server utilizes for the static files (eg index.php under /var/www/your_site on Linux or C:/inetpub/root on Windows). Initialize a git repository.
 - Clone this repo using `git clone https://github.com/TaliBytes/php-home-server`
 - restart Apache/IIS/your web-server
   - `systemctl restart apache2` for Linux
