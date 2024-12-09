@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Page Not Found</title>
+        <title>Page Offline</title>
         <link rel="stylesheet" href="/static/globalStyles.css"/>
     </head>
     <body>
