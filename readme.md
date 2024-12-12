@@ -103,7 +103,7 @@ Make sure dependencies are installed
 
 3 - Configure IIS and PHP to run together. Microsoft's instructions [here](https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh994592(v=ws.11)) are quite helpful.
 
-Note: Using Apache on Windows will be fairly similar to the configuration detailed in the "For Linux" section above. At this time, I don't have specific instructions for enabling the ability to rewrite URLs via Apache for Windows. This should be possible but will take research on your part.
+Note: Using Apache on Windows will be fairly similar to the configuration detailed in the "For Linux" section above. At this time, I don't have specific instructions for enabling the ability to rewrite URLs or use SSL via Apache for Windows. This should be possible but will take research on your part. To use SSL with IIS, [this video tutorial](https://youtu.be/azfgoGXqhNg) is a good starting point.
 
 &nbsp;
 
