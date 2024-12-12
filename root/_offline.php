@@ -1,20 +1,10 @@
-<?php
-    include 'globals.php';
-?>
-
-
-
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Page Offline</title>
+        <title>Site Offline</title>
         <link rel="stylesheet" href="/static/globalStyles.css"/>
     </head>
     <body>
-        <?php
-            if($globalAlertMsg != null) {echo "<div id='globalAlertBanner'>$globalAlertMsg</div>";}
-        ?>
-
         <div style="display:block; width:100%; min-height:108px; font-size:1.3rem; text-align:center; color:white; font-weight:bold; background-color:rgb(0, 66, 110);">
             <br/><span>Website Offline</span><br/><br/>
             <span style="display:block; width:95%; margin:auto; font-weight:normal; font-size:1.2rem;">

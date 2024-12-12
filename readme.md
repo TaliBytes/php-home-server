@@ -35,13 +35,15 @@ Make sure dependencies are installed
 
 4 - `sudo apt install mysql-server`
 
-5 - I found [this article](https://www.digitalocean.com/community/tutorials/how-to-install-lamp-stack-on-ubuntu#step-6-testing-database-connection-from-php-optional) (unaffiliated) very helpful. It details how to setup the LAMP stack, configure the necessities for Apache running PHP/MySQL, etc...
+5 - I recommend reordering the default application using `sudo nano /etc/apache2/mods-enabled/dir.conf`
 
-6 - [This article](https://scriptstown.com/how-to-setup-cloudflare-ssl-and-configure-origin-certificate-for-apache/) was helpful for configuring my Cloudflare Origin Certificate and PEM for my Apache server. I also have my Cloudflare configured to have A Name (example.com) point to my home server public IP. The home server has ports 443, 80, and 3389 (RDP) open. My router is configured to port-forward for 80 and 443.
+6 - I found [this article](https://www.digitalocean.com/community/tutorials/how-to-install-lamp-stack-on-ubuntu#step-6-testing-database-connection-from-php-optional) (unaffiliated) very helpful. It details how to setup the LAMP stack, configure the necessities for Apache running PHP/MySQL, etc...
 
-7 - use `sudo a2enmod rewrite`. This project handles routing thru PHP instead of a file directory or Apache.
+7 - [This article](https://scriptstown.com/how-to-setup-cloudflare-ssl-and-configure-origin-certificate-for-apache/) was helpful for configuring my Cloudflare Origin Certificate and PEM for my Apache server. I also have my Cloudflare configured to have A Name (example.com) point to my home server public IP. The home server has ports 443, 80, and 3389 (RDP) open. My router is configured to port-forward for 80 and 443.
 
-8 - run `sudo nano /etc/apache2/sites-available/your_site.conf` and add
+8 - use `sudo a2enmod rewrite`. This project handles routing thru PHP instead of a file directory or Apache.
+
+9 - run `sudo nano /etc/apache2/sites-available/your_site.conf` and add
 
 ```XML
 <Directory /var/www/your_site>
@@ -49,7 +51,7 @@ Make sure dependencies are installed
 </Directory>
 ```
 
-9 - Save and close. Run `systemctl restart apache2`.
+10 - Save and close. Run `systemctl restart apache2`.
 
 #### For Windows (IIS)
 
@@ -65,7 +67,7 @@ Note: Using Apache on Windows will be fairly similar to the configuration detail
 
 ### Once The Server Is Configured
 
-- In your CLI, navigate to the folder the server utilizes for the static files (eg index.php under /var/www/your_site on Linux or C:/inetpub/root on Windows). Initialize a git repository.
+- In your CLI, navigate to the folder the server utilizes for the static files (eg _onstart.php under /var/www/your_site on Linux or C:/inetpub/root on Windows). Initialize a git repository.
 - Clone this repo using `git clone https://github.com/TaliBytes/php-home-server`
 - restart Apache/IIS/your web-server
   - `systemctl restart apache2` for Linux
