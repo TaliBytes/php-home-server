@@ -83,7 +83,7 @@ Make sure dependencies are installed:
 
 14 - restart and reload apache `sudo service apache2 reload` then `systemctl restart apache2`.
 
-15 - Setup MySQL using `sudo mysql_secure_installation` ... DO set password, remove anonymous users, disallow root login remote, remove test database, reload privilegs table.
+15 - Setup MySQL using `sudo mysql_secure_installation` ... DO set password, remove anonymous users, disallow root login remote, remove test database, reload privileges table.
 
 15b - If password was not set, run `sudo mysql` then `ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '[your_password]';`
 
