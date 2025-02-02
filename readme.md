@@ -121,8 +121,10 @@ Note: Using Apache on Windows will be fairly similar to the configuration detail
 - Clone this repo using `git clone https://github.com/TaliBytes/php-home-server`
 - restart Apache/IIS/your web-server
   - `systemctl restart apache2` for Linux
-  - `cd C:\xampp\apache\bin` then `httpd -k restart` for Windows
-  - right click to start and stop Application Pool and Website in IIS
+  - `cd C:\xampp\apache\bin` then `httpd -k restart` for Windows (Apache)
+  - right click to start and stop Application Pool and Website for Windows (IIS)
+
+- Follow instructions in /sql/readme.md
 
 ## Directories
 
