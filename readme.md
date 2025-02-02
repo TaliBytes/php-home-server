@@ -15,17 +15,17 @@ Some specific feature goals of this project are as follows:
   - access rights (eg cx service, article writers, etc)
   - article interactions (eg comments, votes, follows)
   - statistical information such as article view counts/popularity, etc
-- An online "console" where approved users (see access rights) can manage various data such as the previously mentioned.
+- An online "console" where approved users (see access rights) can manage various data such as the previously mentioned
 
 ## Getting Started
 
 ### Prerequisites
 
-This project is running on the LAMP stack (Linux, Apache, MySQL, PHP). However, the only critical parts of this are MySQL and PHP (ie, the goal is to design this to be PHP-MySQL centric allowing for use via other OS's such as Windows and web-servers such as IIS... or really any combination compatible with PHP and MySQL)
+This project is running on the LAMP stack (Linux, Apache, MySQL, PHP). However, the only critical parts of this are MySQL and PHP (ie, the goal is to design this to be PHP-MySQL centric allowing for use via other OS's such as Windows and web-servers such as IIS... or really any combination compatible with PHP and MySQL).
 
 #### For Linux
 
-Make sure dependencies are installed
+Make sure dependencies are installed:
 
 1 - `sudo apt-get update && sudo apt-get upgrade -y`
 
@@ -37,7 +37,7 @@ Make sure dependencies are installed
 
 5 - I recommend reordering the default application using `sudo nano /etc/apache2/mods-enabled/dir.conf`
 
-6 - use `sudo a2enmod rewrite`. This project handles routing thru PHP instead of a file directory or Apache.
+6 - use `sudo a2enmod rewrite`. This project handles routing thru PHP instead of a file directory or Apache
 
 7a - run `sudo nano /etc/apache2/sites-available/your_site.conf` and add
 
@@ -47,7 +47,7 @@ Make sure dependencies are installed
 </Directory>
 ```
 
-7b - in the same your_site.conf file, make sure bindings and aliases are properly configured
+7b - in the same your_site.conf file, make sure bindings and aliases are properly configured:
 ```
 <VirtualHost *:80>
     ServerName your_site
@@ -63,13 +63,13 @@ Make sure dependencies are installed
 
 &nbsp;
 
-9 - (***optional but recommended for public facing sites***)... configure SSL authentication. Start with `sudo mkdir /etc/apache2/ssl`
+9 - (***optional but recommended for public facing sites***)... configure SSL authentication. Start with `sudo mkdir /etc/apache2/ssl`.
 
-10 - run `sudo a2enmod ssl`
+10 - run `sudo a2enmod ssl`.
 
 11 - generate a Origin Certificate and Private Key from a CDN (such as Cloudflare). Save to the server in `/etc/apache2/ssl/your_site.pem` and `/etc/apache2/ssl/your_site.key` (respectively). Update directory permissions using `sudo chmod -R 655 /etc/apache2/ssl` and ownership using `sudo chown -R www-data:www-data /etc/apache2/ssl`.
 
-12 - To enable SSL bindings for the site, edit config file using `sudo nano /etc/apache2/sites-available/your_site.conf` and add the following into *:443 Virtual Host data
+12 - To enable SSL bindings for the site, edit config file using `sudo nano /etc/apache2/sites-available/your_site.conf` and add the following into *:443 Virtual Host data:
 ```
 <VirtualHost *:443> 
     ...
@@ -79,9 +79,15 @@ Make sure dependencies are installed
 </VirtualHost>
 ```
 
-13 - enable the file using `sudo a2ensite your_site.conf`
+13 - enable the file using `sudo a2ensite your_site.conf`.
 
 14 - restart and reload apache `sudo service apache2 reload` then `systemctl restart apache2`.
+
+15 - Setup MySQL using `sudo mysql_secure_installation` ... DO set password, remove anonymous users, disallow root login remote, remove test database, reload privilegs table.
+
+15b - If password was not set, run `sudo mysql` then `ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '[your_password]';`
+
+16 - Sign in with `sudo mysql -u root -p`.
 
 &nbsp;
 
@@ -93,7 +99,7 @@ Make sure dependencies are installed
 
 &nbsp;
 
-#### For Windows (IIS)
+#### For Windows (Using IIS)
 
 1 - Download php from [their website](https://windows.php.net/download). Microsoft recommends using Web PI instead. Instructions linked in item 3.
 
@@ -102,6 +108,8 @@ Make sure dependencies are installed
 2 - Enable IIS as per [Microsoft's Instructions](https://techcommunity.microsoft.com/blog/iis-support-blog/how-to-enable-iis-and-key-features-on-windows-server-a-step-by-step-guide/4229883)
 
 3 - Configure IIS and PHP to run together. Microsoft's instructions [here](https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh994592(v=ws.11)) are quite helpful.
+
+4 - Download and follow [Oracle's Instructions](https://dev.mysql.com/downloads/installer/) for MySQL installation.
 
 Note: Using Apache on Windows will be fairly similar to the configuration detailed in the "For Linux" section above. At this time, I don't have specific instructions for enabling the ability to rewrite URLs or use SSL via Apache for Windows. This should be possible but will take research on your part. To use SSL with IIS, [this video tutorial](https://youtu.be/azfgoGXqhNg) is a good starting point.
 
@@ -119,10 +127,11 @@ Note: Using Apache on Windows will be fairly similar to the configuration detail
 ## Directories
 
 - /root is where the source files are stored (ie, *.php)
+- /sql is where MySQL schema, etc is stored
 
 ## Contributing
 
-This project is currently not allowing outside contribution.
+This project is currently not allowing outside contributions.
 
 ## License
 
