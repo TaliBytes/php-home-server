@@ -117,7 +117,7 @@ Note: Using Apache on Windows will be fairly similar to the configuration detail
 
 ### Once The Server Is Configured
 
-- In your CLI, navigate to the folder the server utilizes for the static files (eg _onstart.php under /var/www/your_site on Linux or C:/inetpub/root on Windows). Initialize a git repository.
+- In your CLI, navigate to the folder the server utilizes for the static files (eg _onstart.php under /var/www/your_site on Linux or C:/inetpub/root on Windows). Initialize a git repository (it may be necessary to first `sudo chown -R [username]:[username] /var/www/*` on Linux systems).
 - Clone this repo using `git clone https://github.com/TaliBytes/php-home-server`
 - restart Apache/IIS/your web-server
   - `systemctl restart apache2` for Linux
